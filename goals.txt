@@ -1,0 +1,38 @@
+# APP FINE CORSO
+# LETTORE QR CODE CON FUNZIONALITA' AVANZATE
+
+|--- 1 scan del codice veloce e performante
+|
+|--- 2 salvataggio automatico degli scan ( con preview ) con history
+|        - utile quando ad esempio andiamo spesso ad un ristorante e vogliamo salvare il menu
+|
+|--- 3 salvataggio di una copia dei file in locale ( funzione offline ) ?
+|
+|--- 4 possibilità di cancellare i vari scan
+
+
+## STACK TECNOLOGICO
+
+## REACT NATIVE + EXPO
+
+## PACCHETTI
+style:  native paper
+
+storage offile: @react-native-async-storage/async-storage
+
+android apis:  expo-camera 
+
+other:  
+    axios
+    uuid
+    @expo/vector-icons
+    react-native-svg
+    expo-clipboard
+    expo-linking
+    expo-av (beep sound)
+
+
+### SCHERMATE
+
+- HOME ( dove ci sarà la fotocamera )
+    - Modal (per la history divisa in QR/BC)    
