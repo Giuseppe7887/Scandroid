@@ -1,5 +1,15 @@
 {
   "expo": {
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
+    ],
     "name": "Scandroid",
     "slug": "Scandroid",
     "version": "1.0.0",
@@ -18,10 +28,21 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.gius3ppe.Scandroid"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "a0226b3f-8927-4224-bcd5-10b3b2f2c372"
+      }
+    },
+    "owner": "gius3ppe"
   }
 }
