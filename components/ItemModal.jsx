@@ -1,4 +1,4 @@
-import { Modal, TouchableOpacity, View, Text, FlatList } from "react-native";
+import { Modal, TouchableOpacity, View, FlatList } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Divider, SegmentedButtons } from "react-native-paper";
 import { useState, useEffect } from "react";
@@ -24,6 +24,7 @@ export default function ItemModal({
     let filtered = scans.filter(x=>x.type == currentValue);
     setFilteredList(filtered);
   },[scans])
+
 
 
   return (

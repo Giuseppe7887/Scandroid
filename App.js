@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { PaperProvider } from 'react-native-paper';
 import { Camera } from 'expo-camera';
 
@@ -13,6 +13,8 @@ import Main from './Main';
 
 
 export default function App() {
+
+
 
   let [permissionGranted, setPermissionGranted] = useState(false);
 

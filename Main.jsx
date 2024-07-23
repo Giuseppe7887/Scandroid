@@ -5,8 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   FlatList,
-  Image,
-  Dimensions,
+  Dimensions
 } from "react-native";
 import { CameraView } from "expo-camera";
 
@@ -31,7 +30,12 @@ import Animated, {
   useAnimatedStyle,
 } from "react-native-reanimated";
 
+import { Portal,useTheme } from "react-native-paper";
+
 function Main() {
+
+
+  
   let [lastCode, setLastCode] = useState("");
   let [codeFoundDialogVisible, setCodeFoundDialogVisible] = useState(false);
   let [scans, setScans] = useState([]);
@@ -179,15 +183,21 @@ function Main() {
 
   return (
     <View style={styles.main}>
+
       <CameraView
         onBarcodeScanned={(codeObject) => codeScanned(codeObject)}
         style={styles.camera}
       >
-        <Animated.Image
-          style={[styles.square, dynamicStyle]}
-          source={require("./assets/scanner.png")}
-        />
+        <Portal>
+          <Animated.Image
+            style={[styles.square, dynamicStyle]}
+            source={require("./assets/scanner.png")}
+          />
+
+        </Portal>
+
       </CameraView>
+
       {scans.length > 0 ? (
         <View
           style={{
@@ -215,7 +225,7 @@ function Main() {
         </View>
       )}
       {scans.length > 0 && (
-        <FlatList
+        <FlatList      
           data={scans}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => {
@@ -248,12 +258,19 @@ function Main() {
           }}
         />
       )}
-      <CodeFoundDialog
-        data={codeFoundDialogData}
-        visible={codeFoundDialogVisible}
-        hideDialog={() => setCodeFoundDialogVisible((old) => !old)}
-      />
+
+      <Portal>
+
+        <CodeFoundDialog
+          data={codeFoundDialogData}
+          visible={codeFoundDialogVisible}
+          hideDialog={() => setCodeFoundDialogVisible((old) => !old)}
+        />
+      </Portal>
+
+
       <ItemModal
+
         scans={scans}
         updateList={updateList}
         modalVisible={modalVisible}
@@ -261,6 +278,7 @@ function Main() {
         setCodeFoundDialogData={setCodeFoundDialogData}
         setCodeFoundDialogVisible={setCodeFoundDialogVisible}
       />
+
     </View>
   );
 }
@@ -271,6 +289,7 @@ const styles = StyleSheet.create({
   main: {
     width: "100%",
     height: "100%",
+    position: "relative"
   },
   camera: {
     width: "100%",
@@ -278,9 +297,14 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 60
   },
   square: {
     width: 50,
     height: 50,
+    position: "absolute",
+    zIndex: 100,
+    top: "25%",
+    left: "12.5%"
   },
 });
